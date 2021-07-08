@@ -12,6 +12,7 @@ while (workingDays != 0){
     let empCheck = Math.floor(Math.random() * 3 );
     workingHours += GetHours(empCheck);
     if(workingHours > MAX_WORKING_HOURS){
+        workingHours = MAX_WORKING_HOURS;
         break;
     }
     workingDays--;
