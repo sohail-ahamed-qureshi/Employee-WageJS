@@ -1,17 +1,20 @@
 
 //constants
-const PART_TIME = 4;
-const FULL_TIME = 8;
+const PART_TIME = 8;
+const FULL_TIME = 16;
 const WAGE_PER_HR = 20;
 const WORKED_FULL = 1;
 const WORKED_HALF = 2;
+const MAX_WORKING_HOURS = 160;
 //variables
 let empWage , workingHours =0;
 let workingDays = 20;
-
 while (workingDays != 0){
     let empCheck = Math.floor(Math.random() * 3 );
     workingHours += GetHours(empCheck);
+    if(workingHours > MAX_WORKING_HOURS){
+        break;
+    }
     workingDays--;
 }
 empWage = workingHours * WAGE_PER_HR;
