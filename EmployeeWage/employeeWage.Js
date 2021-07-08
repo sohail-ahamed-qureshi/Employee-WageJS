@@ -5,11 +5,15 @@ const FULL_TIME = 8;
 const WAGE_PER_HR = 20;
 const WORKED_FULL = 1;
 const WORKED_HALF = 2;
-// check for attendence
-let empCheck = Math.floor(Math.random() * 3 );
 //variables
-let empWage, workingHours;
-workingHours = GetHours(empCheck)
+let empWage , workingHours =0;
+let workingDays = 20;
+
+while (workingDays != 0){
+    let empCheck = Math.floor(Math.random() * 3 );
+    workingHours += GetHours(empCheck);
+    workingDays--;
+}
 empWage = workingHours * WAGE_PER_HR;
 console.log("Employee Wage: " + empWage);
 //function to get emphours
