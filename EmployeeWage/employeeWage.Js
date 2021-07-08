@@ -6,19 +6,26 @@ const WORKED_FULL = 1;
 const WORKED_HALF = 2;
 const MAX_WORKING_HOURS = 100;
 //variables
-let empWage , workingHours =0;
+let empWage , workingHours =0, totalWorkingHours=0;
 let workingDays = 20;
+let empDailyWageArray = new Array();
 while (workingDays != 0){
     let empCheck = Math.floor(Math.random() * 3 );
-    workingHours += GetHours(empCheck);
+    workingHours = GetHours(empCheck);
+    totalWorkingHours += workingHours;
+    empDailyWageArray.push(GetDailyWage(workingHours));
     if(workingHours >= MAX_WORKING_HOURS){
         workingHours = MAX_WORKING_HOURS;
         break;
     }
     workingDays--;
 }
-empWage = workingHours * WAGE_PER_HR;
+empWage = GetDailyWage(totalWorkingHours);
 console.log("Employee Wage: " + empWage);
+//calculating Daily wage
+function GetDailyWage(workingHours){
+    return workingHours * WAGE_PER_HR;
+}
 //function to get emphours
  function GetHours(empCheck){
     switch(empCheck){
