@@ -1,11 +1,10 @@
-
 //constants
-const PART_TIME = 8;
-const FULL_TIME = 16;
+const PART_TIME = 4;
+const FULL_TIME = 8;
 const WAGE_PER_HR = 20;
 const WORKED_FULL = 1;
 const WORKED_HALF = 2;
-const MAX_WORKING_HOURS = 160;
+const MAX_WORKING_HOURS = 100;
 //variables
 let empWage , workingHours =0;
 let workingDays = 20;
