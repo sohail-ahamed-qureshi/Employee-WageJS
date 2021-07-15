@@ -11,18 +11,22 @@ let empWage,
   totalWorkingHours = 0;
 let workingDays = 20;
 let empDailyWageArray = new Array();
+let empDailyWageMap = new Map();
 
 while (workingDays != 0) {
   let empCheck = Math.floor(Math.random() * 3);
   workingHours = GetHours(empCheck);
   totalWorkingHours += workingHours;
   empDailyWageArray.push(GetDailyWage(workingHours));
+  //UC8 - calculate emp wage using map
+  empDailyWageMap.set(totalWorkedDays, GetDailyWage(workingHours));
   if (workingHours >= MAX_WORKING_HOURS) {
     workingHours = MAX_WORKING_HOURS;
     break;
   }
   workingDays--;
 }
+console.log(empDailyWageMap);
 //7A-calculating Daily wage
 empWage = GetDailyWage(totalWorkingHours);
 console.log("Employee Wage: " + empWage);
