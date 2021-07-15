@@ -6,37 +6,61 @@ const WORKED_FULL = 1;
 const WORKED_HALF = 2;
 const MAX_WORKING_HOURS = 100;
 //variables
-let empWage , workingHours =0, totalWorkingHours=0;
+let empWage,
+  workingHours = 0,
+  totalWorkingHours = 0;
 let workingDays = 20;
 let empDailyWageArray = new Array();
-while (workingDays != 0){
-    let empCheck = Math.floor(Math.random() * 3 );
-    workingHours = GetHours(empCheck);
-    totalWorkingHours += workingHours;
-    empDailyWageArray.push(GetDailyWage(workingHours));
-    if(workingHours >= MAX_WORKING_HOURS){
-        workingHours = MAX_WORKING_HOURS;
-        break;
-    }
-    workingDays--;
+
+while (workingDays != 0) {
+  let empCheck = Math.floor(Math.random() * 3);
+  workingHours = GetHours(empCheck);
+  totalWorkingHours += workingHours;
+  empDailyWageArray.push(GetDailyWage(workingHours));
+  if (workingHours >= MAX_WORKING_HOURS) {
+    workingHours = MAX_WORKING_HOURS;
+    break;
+  }
+  workingDays--;
 }
+//7A-calculating Daily wage
 empWage = GetDailyWage(totalWorkingHours);
 console.log("Employee Wage: " + empWage);
-//calculating Daily wage
-function GetDailyWage(workingHours){
-    return workingHours * WAGE_PER_HR;
+
+//7B-display day with wage using map
+let daywithwageArray = empDailyWageArray.map(display);
+console.log("Employee wage for Month with days:")
+console.log(daywithwageArray);
+
+//7C-Show days with full time wage of 160 using filter funtion
+let fullTimeWageArray = daywithwageArray.filter(fullTimeFuntion);
+console.log("Employee wage when Full time earned:")
+console.log(fullTimeWageArray);
+
+
+function fullTimeFuntion(empWage) {
+  return empWage.includes("160");
 }
+
+function display(empWage, counter) {
+  return "Day: " + counter + " Wage: " + empWage;
+}
+
+function GetDailyWage(workingHours) {
+  return workingHours * WAGE_PER_HR;
+}
+
 //function to get emphours
- function GetHours(empCheck){
-    switch(empCheck){
-        case WORKED_FULL:
-            //employee is present and full time
-            return  FULL_TIME;
-        case WORKED_HALF:
-            //employee is present and part-time
-            return PART_TIME;   
-        default:
-            //employee is absent
-            return 0;
-    }
+function GetHours(empCheck) {
+  switch (empCheck) {
+    case WORKED_FULL:
+      //employee is present and full time
+      return FULL_TIME;
+    case WORKED_HALF:
+      //employee is present and part-time
+      return PART_TIME;
+    default:
+      //employee is absent
+      return 0;
+  }
 }
