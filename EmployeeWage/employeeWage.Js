@@ -37,6 +37,35 @@ let fullTimeWageArray = daywithwageArray.filter(fullTimeFuntion);
 console.log("Employee wage when Full time earned:")
 console.log(fullTimeWageArray);
 
+//7D- Show first occurance of full time wage.
+console.log("First full time wage: "+daywithwageArray.find(firstFullTime));
+
+//7E- check emp wage full time is truely holding full time
+console.log("Check all elements have full time: "+daywithwageArray.every(isAllFullTime));
+
+//7F- check emp wage is there any part time 
+console.log("Check elements are part time: "+daywithwageArray.some(isPartTime));
+
+//7G- check Number of days employee worked 
+console.log("Check number of days employee worked: "+empDailyWageArray.reduce(totalWorkedDays, 0));
+
+// functions
+function totalWorkedDays(numOfDays, empWage){
+  if(empWage > 0) return numOfDays+1;
+  return numOfDays;
+}
+
+function isPartTime(empWage){
+  return empWage.includes("80");
+}
+
+function isAllFullTime(empWage){
+  return empWage.includes("160");
+}
+
+function firstFullTime(empWage){
+  return empWage.includes("160");
+}
 
 function fullTimeFuntion(empWage) {
   return empWage.includes("160");
